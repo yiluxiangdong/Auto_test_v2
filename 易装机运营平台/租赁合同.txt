@@ -94,7 +94,7 @@ CRM_rent_T+1
     订单管理
     租赁入网    xpath= //*[@id="orderManageDiv"]/div/div[1]/ul/li[9]/a/span    xpath=//*[@id="orderDetailForm"]/div[1]/table/tbody/tr/td[1]/table/tbody/tr[1]/td/div/table/tbody/tr[6]/td[4]/table/tbody/tr[1]/td/span[2]    xpath=//*[@id="orderDetailForm"]/div[1]/table/tbody/tr/td[1]/table/tbody/tr[1]/td/div/table/tbody/tr[8]/td[4]/span[1]    #CRM/租赁合同/T+1
     关闭浏览器
-    打开浏览器    c:/users/liuxia~1.xgd/appdata/local/temp/RIDEjirqmb.d/report.html    #打开测试报告
+    打开浏览器    E:/abc/report.html    #打开测试报告
 
 POS_rent_T+1
     [Documentation]    CRM入网，租赁合同，T+1
@@ -116,4 +116,4 @@ POS_rent_T+1
     订单管理
     租赁入网    xpath= //*[@id="orderManageDiv"]/div/div[1]/ul/li[14]/a/span    xpath=//*[@id="orderDetailForm"]/div[1]/table/tbody/tr/td[1]/table/tbody/tr[1]/td/div/table/tbody/tr[6]/td[4]/table/tbody/tr[1]/td/span[2]    xpath=//*[@id="orderDetailForm"]/div[1]/table/tbody/tr/td[1]/table/tbody/tr[1]/td/div/table/tbody/tr[8]/td[4]/span[1]    #CRM/租赁合同/T+1
     关闭浏览器
-    打开浏览器    c:/users/liuxia~1.xgd/appdata/local/temp/RIDEjirqmb.d/report.html    #打开测试报告
+    打开浏览器    E:/abc/report.html    #打开测试报告
