@@ -1,0 +1,119 @@
+*** Settings ***
+Resource          业务关键字.txt
+Library           Selenium2Library
+Library           Screenshot
+Library           AutoItLibrary
+Library           DatabaseLibrary
+Library           ../../../../Lib/site-packages/robot/libraries/Collections.py
+
+*** Test Cases ***
+CRM入网_1
+    [Documentation]    CRM入网，租赁合同，T+1
+    ...    crm \ \ \ \ //*[@id="orderManageDiv"]/div/div[1]/ul/li[9]/a/span
+    ...    pos+ \ \ \ //*[@id="orderManageDiv"]/div/div[1]/ul/li[14]/a/span
+    ...
+    ...    营业执照
+    ...    //*[@id="orderDetailForm"]/div[1]/table/tbody/tr/td[1]/table/tbody/tr[1]/td/div/table/tbody/tr[6]/td[4]/table/tbody/tr[1]/td/span[1]
+    ...    租赁
+    ...    //*[@id="orderDetailForm"]/div[1]/table/tbody/tr/td[1]/table/tbody/tr[1]/td/div/table/tbody/tr[6]/td[4]/table/tbody/tr[1]/td/span[2]
+    ...
+    ...    T+1
+    ...    //*[@id="orderDetailForm"]/div[1]/table/tbody/tr/td[1]/table/tbody/tr[1]/td/div/table/tbody/tr[8]/td[4]/span[1]
+    ...    D0
+    ...    //*[@id="orderDetailForm"]/div[1]/table/tbody/tr/td[1]/table/tbody/tr[1]/td/div/table/tbody/tr[8]/td[4]/span[2]
+    打开浏览器    http://172.20.21.176:18080/rrdop/login.html
+    用户名    test    111111
+    点击登录
+    订单管理
+    租赁入网    xpath= //*[@id="orderManageDiv"]/div/div[1]/ul/li[9]/a/span    xpath=//*[@id="orderDetailForm"]/div[1]/table/tbody/tr/td[1]/table/tbody/tr[1]/td/div/table/tbody/tr[6]/td[4]/table/tbody/tr[1]/td/span[2]    xpath=//*[@id="orderDetailForm"]/div[1]/table/tbody/tr/td[1]/table/tbody/tr[1]/td/div/table/tbody/tr[8]/td[4]/span[1]    #CRM/租赁合同/T+1
+    关闭浏览器
+    打开浏览器    c:/users/liuxia~1.xgd/appdata/local/temp/RIDEjirqmb.d/report.html    #打开测试报告
+
+CRM_rent_D0
+    [Documentation]    CRM入网，租赁合同，T+1
+    ...    crm \ \ \ \ //*[@id="orderManageDiv"]/div/div[1]/ul/li[9]/a/span
+    ...    pos+ \ \ \ //*[@id="orderManageDiv"]/div/div[1]/ul/li[14]/a/span
+    ...
+    ...    营业执照
+    ...    //*[@id="orderDetailForm"]/div[1]/table/tbody/tr/td[1]/table/tbody/tr[1]/td/div/table/tbody/tr[6]/td[4]/table/tbody/tr[1]/td/span[1]
+    ...    租赁
+    ...    //*[@id="orderDetailForm"]/div[1]/table/tbody/tr/td[1]/table/tbody/tr[1]/td/div/table/tbody/tr[6]/td[4]/table/tbody/tr[1]/td/span[2]
+    ...
+    ...    T+1
+    ...    //*[@id="orderDetailForm"]/div[1]/table/tbody/tr/td[1]/table/tbody/tr[1]/td/div/table/tbody/tr[8]/td[4]/span[1]
+    ...    D0
+    ...    //*[@id="orderDetailForm"]/div[1]/table/tbody/tr/td[1]/table/tbody/tr[1]/td/div/table/tbody/tr[8]/td[4]/span[2]
+    打开浏览器    http://172.20.21.176:18080/rrdop/login.html
+    用户名    test    111111
+    点击登录
+    订单管理
+    租赁入网    xpath= //*[@id="orderManageDiv"]/div/div[1]/ul/li[9]/a/span    xpath=//*[@id="orderDetailForm"]/div[1]/table/tbody/tr/td[1]/table/tbody/tr[1]/td/div/table/tbody/tr[6]/td[4]/table/tbody/tr[1]/td/span[2]    xpath=//*[@id="orderDetailForm"]/div[1]/table/tbody/tr/td[1]/table/tbody/tr[1]/td/div/table/tbody/tr[8]/td[4]/span[2]    #CRM/租赁合同/T+1
+    关闭浏览器
+    打开浏览器    c:/users/liuxia~1.xgd/appdata/local/temp/RIDEjirqmb.d/report.html    #打开测试报告
+
+POS_rent_D0
+    [Documentation]    CRM入网，租赁合同，T+1
+    ...    crm \ \ \ \ //*[@id="orderManageDiv"]/div/div[1]/ul/li[9]/a/span
+    ...    pos+ \ \ \ //*[@id="orderManageDiv"]/div/div[1]/ul/li[14]/a/span
+    ...
+    ...    营业执照
+    ...    //*[@id="orderDetailForm"]/div[1]/table/tbody/tr/td[1]/table/tbody/tr[1]/td/div/table/tbody/tr[6]/td[4]/table/tbody/tr[1]/td/span[1]
+    ...    租赁
+    ...    //*[@id="orderDetailForm"]/div[1]/table/tbody/tr/td[1]/table/tbody/tr[1]/td/div/table/tbody/tr[6]/td[4]/table/tbody/tr[1]/td/span[2]
+    ...
+    ...    T+1
+    ...    //*[@id="orderDetailForm"]/div[1]/table/tbody/tr/td[1]/table/tbody/tr[1]/td/div/table/tbody/tr[8]/td[4]/span[1]
+    ...    D0
+    ...    //*[@id="orderDetailForm"]/div[1]/table/tbody/tr/td[1]/table/tbody/tr[1]/td/div/table/tbody/tr[8]/td[4]/span[2]
+    打开浏览器    http://172.20.21.176:18080/rrdop/login.html
+    用户名    test    111111
+    点击登录
+    订单管理
+    租赁入网    xpath= //*[@id="orderManageDiv"]/div/div[1]/ul/li[14]/a/span    xpath=//*[@id="orderDetailForm"]/div[1]/table/tbody/tr/td[1]/table/tbody/tr[1]/td/div/table/tbody/tr[6]/td[4]/table/tbody/tr[1]/td/span[2]    xpath=//*[@id="orderDetailForm"]/div[1]/table/tbody/tr/td[1]/table/tbody/tr[1]/td/div/table/tbody/tr[8]/td[4]/span[2]    #CRM/租赁合同/T+1
+    关闭浏览器
+    打开浏览器    c:/users/liuxia~1.xgd/appdata/local/temp/RIDEjirqmb.d/report.html    #打开测试报告
+
+CRM_rent_T+1
+    [Documentation]    CRM入网，租赁合同，T+1
+    ...    crm \ \ \ \ //*[@id="orderManageDiv"]/div/div[1]/ul/li[9]/a/span
+    ...    pos+ \ \ \ //*[@id="orderManageDiv"]/div/div[1]/ul/li[14]/a/span
+    ...
+    ...    营业执照
+    ...    //*[@id="orderDetailForm"]/div[1]/table/tbody/tr/td[1]/table/tbody/tr[1]/td/div/table/tbody/tr[6]/td[4]/table/tbody/tr[1]/td/span[1]
+    ...    租赁
+    ...    //*[@id="orderDetailForm"]/div[1]/table/tbody/tr/td[1]/table/tbody/tr[1]/td/div/table/tbody/tr[6]/td[4]/table/tbody/tr[1]/td/span[2]
+    ...
+    ...    T+1
+    ...    //*[@id="orderDetailForm"]/div[1]/table/tbody/tr/td[1]/table/tbody/tr[1]/td/div/table/tbody/tr[8]/td[4]/span[1]
+    ...    D0
+    ...    //*[@id="orderDetailForm"]/div[1]/table/tbody/tr/td[1]/table/tbody/tr[1]/td/div/table/tbody/tr[8]/td[4]/span[2]
+    初始化浏览器
+    打开浏览器    http://172.20.21.176:18080/rrdop/login.html
+    用户名    test    111111
+    点击登录
+    订单管理
+    租赁入网    xpath= //*[@id="orderManageDiv"]/div/div[1]/ul/li[9]/a/span    xpath=//*[@id="orderDetailForm"]/div[1]/table/tbody/tr/td[1]/table/tbody/tr[1]/td/div/table/tbody/tr[6]/td[4]/table/tbody/tr[1]/td/span[2]    xpath=//*[@id="orderDetailForm"]/div[1]/table/tbody/tr/td[1]/table/tbody/tr[1]/td/div/table/tbody/tr[8]/td[4]/span[1]    #CRM/租赁合同/T+1
+    关闭浏览器
+    打开浏览器    c:/users/liuxia~1.xgd/appdata/local/temp/RIDEjirqmb.d/report.html    #打开测试报告
+
+POS_rent_T+1
+    [Documentation]    CRM入网，租赁合同，T+1
+    ...    crm \ \ \ \ //*[@id="orderManageDiv"]/div/div[1]/ul/li[9]/a/span
+    ...    pos+ \ \ \ //*[@id="orderManageDiv"]/div/div[1]/ul/li[14]/a/span
+    ...
+    ...    营业执照
+    ...    //*[@id="orderDetailForm"]/div[1]/table/tbody/tr/td[1]/table/tbody/tr[1]/td/div/table/tbody/tr[6]/td[4]/table/tbody/tr[1]/td/span[1]
+    ...    租赁
+    ...    //*[@id="orderDetailForm"]/div[1]/table/tbody/tr/td[1]/table/tbody/tr[1]/td/div/table/tbody/tr[6]/td[4]/table/tbody/tr[1]/td/span[2]
+    ...
+    ...    T+1
+    ...    //*[@id="orderDetailForm"]/div[1]/table/tbody/tr/td[1]/table/tbody/tr[1]/td/div/table/tbody/tr[8]/td[4]/span[1]
+    ...    D0
+    ...    //*[@id="orderDetailForm"]/div[1]/table/tbody/tr/td[1]/table/tbody/tr[1]/td/div/table/tbody/tr[8]/td[4]/span[2]
+    打开浏览器    http://172.20.21.176:18080/rrdop/login.html
+    用户名    test    111111
+    点击登录
+    订单管理
+    租赁入网    xpath= //*[@id="orderManageDiv"]/div/div[1]/ul/li[14]/a/span    xpath=//*[@id="orderDetailForm"]/div[1]/table/tbody/tr/td[1]/table/tbody/tr[1]/td/div/table/tbody/tr[6]/td[4]/table/tbody/tr[1]/td/span[2]    xpath=//*[@id="orderDetailForm"]/div[1]/table/tbody/tr/td[1]/table/tbody/tr[1]/td/div/table/tbody/tr[8]/td[4]/span[1]    #CRM/租赁合同/T+1
+    关闭浏览器
+    打开浏览器    c:/users/liuxia~1.xgd/appdata/local/temp/RIDEjirqmb.d/report.html    #打开测试报告
