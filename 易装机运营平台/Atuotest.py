@@ -3,4 +3,7 @@
 """ 
 @author:liuxiaobing 
 @time: 2017/11/15 
-"""  
+"""
+class Autotest:
+        def printMsg(self,msg):
+            print msg

@@ -7,6 +7,7 @@ Library           DatabaseLibrary
 Library           requests
 Library           RequestsLibrary
 Library           String
+Library           GetCode
 
 *** Test Cases ***
 CRM_license_D0
@@ -132,16 +133,20 @@ POS_xw_T+1
     打开浏览器    E:/abc/report.html    #打开测试报告
 
 demo
-    ${a}    Set Variable    100
-    log    ${a}
-    ${interger}    Convert To Integer    ${a}    2
-    log    ${interger}
-    ${number}    Convert To Number    ${a}    8
-    log    ${number}
-    ${hex}    Convert To Hex    ${a}    16
-    log    ${hex}
+    #${a}    Set Variable    100
+    #log    ${a}
+    #${interger}    Convert To Integer    ${a}    2
+    #log    ${interger}
+    #${number}    Convert To Number    ${a}    8
+    #log    ${number}
+    #${hex}    Convert To Hex    ${a}    16
+    #log    ${hex}
     #Fatal Error    停止当前case
-    log    停止打印
-    Should Not Be Empty    q
-    ${cmd}    Evaluate    os.system(r'ls')    os
-    ${str}    Set Variable    Hello Word
+    #log    停止打印
+    #Should Not Be Empty    q
+    #${cmd}    Evaluate    os.system(r'ls')    os
+    #${str}    Set Variable    Hello Word
+    #${a}
+    ${numbers}    Set Variable    1
+    log    ${numbers}
+    Get Num
