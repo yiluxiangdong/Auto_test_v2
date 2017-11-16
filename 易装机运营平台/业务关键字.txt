@@ -1,6 +1,7 @@
 *** Settings ***
 Library           Screenshot
 Library           DatabaseLibrary
+Library           GetCode
 
 *** Keywords ***
 初始化浏览器
@@ -17,10 +18,12 @@ Library           DatabaseLibrary
     [Arguments]    ${username}    ${password}    # 用户名与密码
     Input Text    xpath=//input[@id='userid_input']    ${username}
     Input Password    xpath=//input[@id='pwd_input']    ${password}
-    Take Screenshot    code
+    Take Screenshot    code.jpg    100%
     log    截图完成
-    sleep    5
-    log    输入用户名密码登录平台
+    sleep    1
+    ${code}    Getcode
+    Input Text    id=code_input    ${code}
+    log    输入用户名密码验证码${code}登录平台
     [Return]    rrd
 
 输入验证码

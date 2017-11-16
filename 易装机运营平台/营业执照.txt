@@ -147,6 +147,5 @@ demo
     #${cmd}    Evaluate    os.system(r'ls')    os
     #${str}    Set Variable    Hello Word
     #${a}
-    ${numbers}    Set Variable    1
+    ${numbers}    Getcode
     log    ${numbers}
-    Get Num
