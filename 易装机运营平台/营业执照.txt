@@ -27,10 +27,9 @@ CRM_license_D0
     [Tags]    pos
     初始化浏览器
     打开浏览器    http://172.20.21.176:18080/rrdop/login.html
-    用户名    test    111111
-    点击登录
+    登录    test    111111
     订单管理
-    营业执照    xpath=//*[@id="orderManageDiv"]/div/div[1]/ul/li[9]/a/span    xpath=//*[@id="orderDetailForm"]/div[1]/table/tbody/tr/td[1]/table/tbody/tr[1]/td/div/table/tbody/tr[6]/td[4]/table/tbody/tr[1]/td/span[1]    xpath=//*[@id="orderDetailForm"]/div[1]/table/tbody/tr/td[1]/table/tbody/tr[1]/td/div/table/tbody/tr[8]/td[4]/span[2]    #CRM/营业执照/T+1
+    营业执照    xpath=//*[@id="orderManageDiv"]/div/div[1]/ul/li[9]/a/span    xpath=//*[@id="orderDetailForm"]/div[1]/table/tbody/tr/td[1]/table/tbody/tr[1]/td/div/table/tbody/tr[6]/td[4]/table/tbody/tr[1]/td/span[1]    xpath=//*[@id="orderDetailForm"]/div[1]/table/tbody/tr/td[1]/table/tbody/tr[1]/td/div/table/tbody/tr[8]/td[4]/span[2]    test
     关闭浏览器
     打开浏览器    E:/abc/report.html    #打开测试报告
 
@@ -51,10 +50,9 @@ POS_license_D0
     [Tags]    pos+营业执照入网D0
     初始化浏览器
     打开浏览器    http://172.20.21.176:18080/rrdop/login.html
-    用户名    test    111111
-    点击登录
+    登录    test    111111
     订单管理
-    营业执照    xpath=//*[@id="orderManageDiv"]/div/div[1]/ul/li[14]/a/span    xpath=//*[@id="orderDetailForm"]/div[1]/table/tbody/tr/td[1]/table/tbody/tr[1]/td/div/table/tbody/tr[6]/td[4]/table/tbody/tr[1]/td/span[1]    xpath=//*[@id="orderDetailForm"]/div[1]/table/tbody/tr/td[1]/table/tbody/tr[1]/td/div/table/tbody/tr[8]/td[4]/span[2]    #CRM/营业执照/T+1
+    营业执照    xpath=//*[@id="orderManageDiv"]/div/div[1]/ul/li[14]/a/span    xpath=//*[@id="orderDetailForm"]/div[1]/table/tbody/tr/td[1]/table/tbody/tr[1]/td/div/table/tbody/tr[6]/td[4]/table/tbody/tr[1]/td/span[1]    xpath=//*[@id="orderDetailForm"]/div[1]/table/tbody/tr/td[1]/table/tbody/tr[1]/td/div/table/tbody/tr[8]/td[4]/span[2]    test
     关闭浏览器
     打开浏览器    E:/abc/report.html    #打开测试报告
 
@@ -75,10 +73,9 @@ CRM_license_T+1
     [Tags]    pos
     初始化浏览器
     打开浏览器    http://172.20.21.176:18080/rrdop/login.html
-    用户名    test    111111
-    点击登录
+    登录    test    111111
     订单管理
-    营业执照    xpath=//*[@id="orderManageDiv"]/div/div[1]/ul/li[9]/a/span    xpath=//*[@id="orderDetailForm"]/div[1]/table/tbody/tr/td[1]/table/tbody/tr[1]/td/div/table/tbody/tr[6]/td[4]/table/tbody/tr[1]/td/span[1]    xpath=//*[@id="orderDetailForm"]/div[1]/table/tbody/tr/td[1]/table/tbody/tr[1]/td/div/table/tbody/tr[8]/td[4]/span[1]    #CRM/营业执照/T+1
+    营业执照    xpath=//*[@id="orderManageDiv"]/div/div[1]/ul/li[9]/a/span    xpath=//*[@id="orderDetailForm"]/div[1]/table/tbody/tr/td[1]/table/tbody/tr[1]/td/div/table/tbody/tr[6]/td[4]/table/tbody/tr[1]/td/span[1]    xpath=//*[@id="orderDetailForm"]/div[1]/table/tbody/tr/td[1]/table/tbody/tr[1]/td/div/table/tbody/tr[8]/td[4]/span[1]    xpath=//input[@name='machineId']
     关闭浏览器
     打开浏览器    E:/abc/report.html    #打开测试报告
 
@@ -96,13 +93,18 @@ POS_license_T+1
     ...    //*[@id="orderDetailForm"]/div[1]/table/tbody/tr/td[1]/table/tbody/tr[1]/td/div/table/tbody/tr[8]/td[4]/span[1]
     ...    D0
     ...    //*[@id="orderDetailForm"]/div[1]/table/tbody/tr/td[1]/table/tbody/tr[1]/td/div/table/tbody/tr[8]/td[4]/span[2]
+    ...
+    ...    普通pos
+    ...    xpath=//input[name='machineId']
+    ...
+    ...    只能pos
+    ...    xpath=//input[name='posPlusMachineId']
     [Tags]    pos+营业执照入网T+1
     初始化浏览器
     打开浏览器    http://172.20.21.176:18080/rrdop/login.html
-    用户名    test    111111
-    点击登录
+    登录    test    111111
     订单管理
-    营业执照    xpath=//*[@id="orderManageDiv"]/div/div[1]/ul/li[14]/a/span    xpath=//*[@id="orderDetailForm"]/div[1]/table/tbody/tr/td[1]/table/tbody/tr[1]/td/div/table/tbody/tr[6]/td[4]/table/tbody/tr[1]/td/span[1]    xpath=//*[@id="orderDetailForm"]/div[1]/table/tbody/tr/td[1]/table/tbody/tr[1]/td/div/table/tbody/tr[8]/td[4]/span[1]    #CRM/营业执照/T+1
+    营业执照    xpath=//*[@id="orderManageDiv"]/div/div[1]/ul/li[14]/a/span    xpath=//*[@id="orderDetailForm"]/div[1]/table/tbody/tr/td[1]/table/tbody/tr[1]/td/div/table/tbody/tr[6]/td[4]/table/tbody/tr[1]/td/span[1]    xpath=//*[@id="orderDetailForm"]/div[1]/table/tbody/tr/td[1]/table/tbody/tr[1]/td/div/table/tbody/tr[8]/td[4]/span[1]    xpath=//input[@name='posPlusMachineId']    #CRM/营业执照/T+1
     关闭浏览器
     打开浏览器    E:/abc/report.html    #打开测试报告
 
@@ -125,8 +127,7 @@ POS_xw_T+1
     [Tags]    pos+营业执照入网T+1
     初始化浏览器
     打开浏览器    http://172.20.21.176:18080/rrdop/login.html
-    用户名    test    111111
-    点击登录
+    登录    test    111111
     订单管理
     小微进件    xpath=//*[@id="orderManageDiv"]/div/div[1]/ul/li[14]/a/span    xpath=//*[@id="orderDetailForm"]/div[1]/table/tbody/tr/td[1]/table/tbody/tr[1]/td/div/table/tbody/tr[6]/td[4]/table/tbody/tr[1]/td/span[3]    xpath=//*[@id="orderDetailForm"]/div[1]/table/tbody/tr/td[1]/table/tbody/tr[1]/td/div/table/tbody/tr[8]/td[4]/span[1]    #CRM/营业执照/T+1
     关闭浏览器
@@ -147,5 +148,9 @@ demo
     #${cmd}    Evaluate    os.system(r'ls')    os
     #${str}    Set Variable    Hello Word
     #${a}
-    ${numbers}    Getcode
-    log    ${numbers}
+    #${numbers}    Getcode
+    #log    ${numbers}
+    初始化浏览器
+    打开浏览器    http://172.20.21.176:18080/rrdop/login.html
+    ${count}    Get Matching Xpath Count    xpath=//*[@id="login_button"]
+    log    ${count}

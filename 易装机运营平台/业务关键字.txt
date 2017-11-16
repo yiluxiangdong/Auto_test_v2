@@ -14,25 +14,19 @@ Library           GetCode
     Maximize Browser Window
     log    打开${url}
 
-用户名
+登录
     [Arguments]    ${username}    ${password}    # 用户名与密码
-    Input Text    xpath=//input[@id='userid_input']    ${username}
-    Input Password    xpath=//input[@id='pwd_input']    ${password}
+    Input Text    xpath=//input[@id='userid_input']    ${username}    #输入用户名
+    Input Password    xpath=//input[@id='pwd_input']    ${password}    #输入密码
     Take Screenshot    code.jpg    100%
     log    截图完成
     sleep    1
-    ${code}    Getcode
-    Input Text    id=code_input    ${code}
+    ${code}    Getcode    #识别验证码
+    Input Text    id=code_input    ${code}    #输入验证码
     log    输入用户名密码验证码${code}登录平台
-    [Return]    rrd
-
-输入验证码
-    [Arguments]    ${code}
-    Input Text    xpath=//input[@id='code_input']    ${code}
-
-点击登录
     Click Button    xpath=//input[@id='login_button']
     log    登陆成功
+    [Return]    rrd
 
 订单管理
     Click Element    xpath=//*[@id="sidebar"]/div[1]/div[3]/a
@@ -40,7 +34,7 @@ Library           GetCode
     log    进入订单管理界面
 
 租赁入网
-    [Arguments]    ${Type}    ${netType}    ${paymentType}    # 入网方式结算方式
+    [Arguments]    ${Type}    ${netType}    ${paymentType}    ${posType}    # 入网方式结算方式
     log    租赁合同入网开始
     Wait Until Page Contains Element    xpath=//*[@id="mCSB_1_container"]/table/tbody/tr[1]/td[4]/select    40    error
     select From List By Label    xpath=//*[@id="mCSB_1_container"]/table/tbody/tr[1]/td[4]/select    已接单
@@ -131,7 +125,7 @@ Library           GetCode
     log    租赁合同入网完成
 
 营业执照
-    [Arguments]    ${Type}    ${netType}    ${paymentType}    # 入网方式结算方式
+    [Arguments]    ${Type}    ${netType}    ${paymentType}    ${posType}    # 入网方式结算方式
     log    营业执照入网开始
     Wait Until Page Contains Element    xpath=//*[@id="mCSB_1_container"]/table/tbody/tr[1]/td[4]/select    40    error
     select From List By Label    xpath=//*[@id="mCSB_1_container"]/table/tbody/tr[1]/td[4]/select    已接单
@@ -204,7 +198,7 @@ Library           GetCode
     sleep    1
     select From List By Label    xpath=//*[@id="panelTabPage"]/section[4]/div[1]/dl/dd[1]/table/tbody/tr[5]/td[2]/select[3]    西安区
     Input Text    xpath=//*[@id="panelTabPage"]/section[4]/div[1]/dl/dd[1]/table/tbody/tr[6]/td[2]/input    解放路${n}号
-    Input Text    xpath=//*[@id="panelTabPage"]/section[4]/div[1]/dl/dd[1]/div/div/input[1]    MPOS2017${n}
+    Input Text    ${posType}    MPOS2017${n}
     Click Element    xpath=//*[@id="panelTabPage"]/section[4]/div[1]/dl/dd[1]/div/div/span[2]
     select From List By Label    xpath=//*[@id="panelTabPage"]/section[4]/div[1]/dl/dd[3]/table/tbody/tr[4]/td[2]/select    200元押金
     select From List By Label    xpath=//*[@id="panelTabPage"]/section[4]/div[1]/dl/dd[3]/table/tbody/tr[5]/td[2]/select    0元通讯费
@@ -274,6 +268,15 @@ Library           GetCode
     Input Text    xpath=//*[@id="panelTabPage"]/section[4]/div[1]/dl/dd[1]/table/tbody/tr[6]/td[2]/input    解放路${n}号
     Click Element    //*[@id="panelTabPage"]/section[4]/div[1]/div/span[2]
     log    小微商户入网完成
+
+租赁
+    \    xpath=//*[@id="panelTabPage"]/section[4]/div[1]/dl/dd[3]/table/tbody/tr[5]/td[2]/select
+
+购买
+    select From List By Label    xpath=//*[@id="panelTabPage"]/section[4]/div[1]/dl/dd[3]/table/tbody/tr[5]/td[2]/select    0元通讯费
+    sleep    1
+    Input Text    xpath=//*[@id="panelTabPage"]/section[4]/div[1]/dl/dd[3]/div[2]/p/textarea    购机费299,0元通讯费，pos+入网
+    Click Element    xpath=//*[@id="panelTabPage"]/section[4]/div[1]/div/span[2]
 
 关闭浏览器
     log    关闭浏览器
