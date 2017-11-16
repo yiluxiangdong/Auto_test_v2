@@ -1,0 +1,41 @@
+使用脚本安装和升级pip
+然后运行以下命令 (需要管理员权限):
+$ wget https://bootstrap.pypa.io/get-pip.py
+$ python get-pip.py
+$ pip -V　　#查看pip版本
+
+
+Linux 下升级python和安装pip
+Linux版本升级：
+1、  首先确认Linux操作系统中自带的python 版本时候与自己所需要的版本一致
+所有的python版本都在https://www.python.org/ftp/python/ 选择下载
+2、 wget https://www.python.org/ftp/python/2.7.11/Python-2.7.11.tgz 进行下载
+3、 解压
+tar -zxvf Python-2.7.11.tgz
+进入Python-2.7.11目录  输入./configure
+make
+make install
+4、  此时查看python版本还是系统默认的版本
+执行：mv /usr/bin/python /usr/bin/python2.6
+      ln -s /usr/local/bin/python2.7 /usr/bin/python再次查看已经更新到你要安装的版本
+
+Pip 安装
+1、在python中提供了一个get-pip.py;下面是地址
+https://bootstrap.pypa.io/get-pip.py
+2、在Linux下执行curl https://bootstrap.pypa.io/get-pip.py | python 进行下载安装
+这样很方便了  想装什么包就装什么包
+Pip install xxx
+
+
+注意：升级完python版本注意，可能你的yum命令不能使用，因为yum命令使用python写的
+# vi /usr/bin/yum　　#打开yum命令文件，更改第一行脚本启动地址
+改成上面 步骤4中的  /usr/bin/python2.6   就ok
+
+补充Windows下安装pip：
+
+快捷方法：
+　　1、找到 C:\Python27\Scripts 目录：直接运行 easy_install.exe pip  就搞定了 安装pip
+
+ pip升级：
+我们在使用pip安装模块的时候，有些时候会出现pip版本过低的情况
+一条命令解决：python -m pip install -U pip        linux和Windows都支持这命令
