@@ -9,7 +9,7 @@ rem pushÄãµÄ´úÂë (git push), ÕâÊ±»áÈÃÄãÊäÈëÓÃ»§ÃûºÍÃÜÂë, ÕâÒ»²½ÊäÈëµÄÓÃ»§ÃûÃÜÂë»
 rem ÕâÒ»²½»áÔÚÓÃ»§Ä¿Â¼ÏÂÉú³ÉÎÄ¼ş.git-rem credential¼ÇÂ¼ÓÃ»§ÃûÃÜÂëµÄĞÅÏ¢¡£
 rem ×Ü½á£º
 rem ·½°¸Ò»Óë·½°¸¶ş¶¼ÊÇ´´½¨.git-credentialÎÄ¼ş²¢Ğ´ÈëÓÃ»§ĞÅÏ¢£¬Ò»¸öÊÇÊÖ¶¯´´½¨£¬Ò»¸öÃüÁî´´½¨¡£
-
+pause
 git init
 git add .
 git commit -m "first commit"
