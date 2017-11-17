@@ -33,7 +33,7 @@ Library           GetCode
     Click Element    xpath=//*[@id="sidebar"]/div[1]/div[4]/ul/li[1]/div/a
     log    进入订单管理界面
 
-租赁入网
+租赁入网租赁
     [Arguments]    ${Type}    ${netType}    ${paymentType}    ${posType}    # 入网方式结算方式
     log    租赁合同入网开始
     Wait Until Page Contains Element    xpath=//*[@id="mCSB_1_container"]/table/tbody/tr[1]/td[4]/select    40    error
@@ -41,6 +41,7 @@ Library           GetCode
     Click Element    css=#orderManageSearchButton
     Wait Until Page Contains Element    xpath=//*[@id="orderManageTable"]/tr[1]/td[1]/div/input
     Click Element    xpath=//*[@id="orderManageTable"]/tr[1]/td[1]/div/input
+    Take Screenshot    order.jpg    100%
     Click Element    ${Type}    #选择CRM
     Wait Until Page Contains Element    ${netType}
     Click Element    ${netType}    #选择租赁合同
@@ -124,7 +125,97 @@ Library           GetCode
     Click Element    xpath=//*[@id="panelTabPage"]/section[4]/div[1]/div/span[2]
     log    租赁合同入网完成
 
-营业执照
+租赁入网购买
+    [Arguments]    ${Type}    ${netType}    ${paymentType}    ${posType}    # 入网方式结算方式
+    log    租赁合同入网开始
+    Wait Until Page Contains Element    xpath=//*[@id="mCSB_1_container"]/table/tbody/tr[1]/td[4]/select    40    error
+    select From List By Label    xpath=//*[@id="mCSB_1_container"]/table/tbody/tr[1]/td[4]/select    已接单
+    Click Element    css=#orderManageSearchButton
+    Wait Until Page Contains Element    xpath=//*[@id="orderManageTable"]/tr[1]/td[1]/div/input
+    Click Element    xpath=//*[@id="orderManageTable"]/tr[1]/td[1]/div/input
+    Take Screenshot    order.jpg    100%
+    Click Element    ${Type}    #选择CRM
+    Wait Until Page Contains Element    ${netType}
+    Click Element    ${netType}    #选择租赁合同
+    Click Element    ${paymentType}    #选择T+1
+    Click Element    xpath=//*[@id="orderDetailForm"]/div[2]/ul/li[1]/div/div/button
+    sleep    3
+    Wait Until Page Contains Element    xpath=//*[@id="panelTabPage"]/section[2]/div[1]/dl/dd[2]/table/tbody/tr[1]/td[2]/select[1]
+    select From List By Label    xpath=//*[@id="panelTabPage"]/section[2]/div[1]/dl/dd[2]/table/tbody/tr[1]/td[2]/select[1]    黑龙江省
+    select From List By Label    xpath=//*[@id="panelTabPage"]/section[2]/div[1]/dl/dd[2]/table/tbody/tr[1]/td[2]/select[2]    牡丹江市
+    sleep    2
+    #Input Text    xpath=//*[@id="panelTabPage"]/section[2]/div[1]/dl/dd[2]/table/tbody/tr[2]/td[2]/input[2]    美宜佳
+    ${n}    Evaluate    random.randint(1000,99999)    random
+    Input Text    xpath=//*[@id="panelTabPage"]/section[2]/div[1]/dl/dd[2]/table/tbody/tr[2]/td[2]/input[2]    美宜佳第${n}分店
+    Input Text    xpath=//*[@id="panelTabPage"]/section[2]/div[1]/dl/dd[2]/table/tbody/tr[3]/td[2]/input    日用百货
+    Input Text    xpath=//*[@id="panelTabPage"]/section[2]/div[1]/dl/dd[2]/table/tbody/tr[4]/td[2]/input    徐敏
+    Input Text    xpath=//*[@id="panelTabPage"]/section[2]/div[1]/dl/dd[2]/table/tbody/tr[5]/td[2]/input    36020319861018052X
+    Input Text    xpath=//*[@id="panelTabPage"]/section[2]/div[1]/dl/dd[2]/table/tbody/tr[6]/td[2]/input    18852136398
+    Input Text    xpath=//*[@id="panelTabPage"]/section[2]/div[1]/dl/dd[2]/table/tbody/tr[7]/td[2]/input    柯增刚
+    Input Text    xpath=//*[@id="panelTabPage"]/section[2]/div[1]/dl/dd[2]/table/tbody/tr[8]/td[2]/input    342501198509230010
+    Input Text    xpath=//*[@id="panelTabPage"]/section[2]/div[1]/dl/dd[2]/table/tbody/tr[9]/td[2]/input    18852136300
+    Input Text    xpath=//*[@id="panelTabPage"]/section[2]/div[1]/dl/dd[2]/table/tbody/tr[10]/td[2]/input    18852136300@189.com
+    sleep    2
+    #Click Element    xpath=//*[@id="panelTabPage"]/section[2]/div[1]/dl/dd[2]/div/ul/li[1]/a
+    #Control Focus    打开    Edit1
+    #Win Wait    [CLASS:#32770]    10
+    #Win Activate    打开
+    #Control Set Text    打开    Edit1    E:/a1.jpg
+    #sleep    2
+    #Control Click    打开    Button1
+    #Click Element    xpath=//*[@id="panelTabPage"]/section[2]/div[1]/dl/dd[2]/div/ul/li[1]/a
+    #Evaluate    os.system('D:/pythonProject/mudelspider/rrd_operator_test/upload_robot.exe')    os
+    #sleep    1
+    Click Element    xpath=//*[@id="panelTabPage"]/section[2]/div[1]/dl/dd[2]/div/ul/li[1]/a
+    Evaluate    os.system('D:/pythonProject/mudelspider/rrd_operator_test/upload_robot.exe')    os
+    sleep    1
+    Click Element    xpath=//*[@id="panelTabPage"]/section[2]/div[1]/dl/dd[2]/div/ul/li[2]/a
+    Evaluate    os.system('D:/pythonProject/mudelspider/rrd_operator_test/upload_robot.exe')    os
+    sleep    1
+    Click Element    xpath=//*[@id="panelTabPage"]/section[2]/div[1]/dl/dd[2]/div/ul/li[3]/a
+    Evaluate    os.system('D:/pythonProject/mudelspider/rrd_operator_test/upload_robot.exe')    os
+    sleep    1
+    Click Element    xpath=//*[@id="panelTabPage"]/section[2]/div[1]/dl/dd[2]/div/ul/li[4]/a
+    Evaluate    os.system('D:/pythonProject/mudelspider/rrd_operator_test/upload_robot.exe')    os
+    sleep    1
+    Click Element    xpath=//*[@id="panelTabPage"]/section[2]/div[1]/dl/dd[2]/div/ul/li[5]/a
+    Evaluate    os.system('D:/pythonProject/mudelspider/rrd_operator_test/upload_robot.exe')    os
+    sleep    1
+    Click Element    xpath=//*[@id="panelTabPage"]/section[2]/div[1]/div/span[2]
+    Wait Until Page Contains Element    xpath=//*[@id="panelTabPage"]/section[3]/div[1]/table/tbody/tr[6]/td[3]/button
+    Input Text    xpath=//*[@id="panelTabPage"]/section[3]/div[1]/table/tbody/tr[2]/td[2]/input    柯增刚
+    Input Text    xpath=//*[@id="panelTabPage"]/section[3]/div[1]/table/tbody/tr[3]/td[2]/input    6236681760000119809
+    Input Text    xpath=//*[@id="panelTabPage"]/section[3]/div[1]/table/tbody/tr[6]/td[2]/input    中国建设银行
+    Input Text    xpath=//*[@id="panelTabPage"]/section[3]/div[1]/table/tbody/tr[7]/td[2]/input    中国建设银行股份有限公司宣城市开发区支行
+    Click Element    xpath=//*[@id="panelTabPage"]/section[3]/div[1]/table/tbody/tr[6]/td[3]/button
+    sleep    2
+    Click Element    xpath=//*[@id="panelTabPage"]/section[3]/div[1]/div[1]/ul/li/div
+    sleep    2
+    Click Element    xpath=//*[@id="panelTabPage"]/section[3]/div[1]/div[1]/ul/li[2]/a
+    sleep    1
+    Evaluate    os.system('D:/pythonProject/mudelspider/rrd_operator_test/upload_robot.exe')    os
+    sleep    1
+    Click Element    xpath=//*[@id="panelTabPage"]/section[3]/div[1]/div[2]/span[2]
+    sleep    1
+    Wait Until Page Contains Element    xpath=//*[@id="panelTabPage"]/section[4]/div[1]/dl/dd[1]/div/div/button
+    Input Text    xpath=//*[@id="panelTabPage"]/section[4]/div[1]/dl/dd[1]/table/tbody/tr[1]/td[2]/input    MYJ${n}店
+    Input Text    xpath=//*[@id="panelTabPage"]/section[4]/div[1]/dl/dd[1]/table/tbody/tr[2]/td[2]/input    美宜佳第${n}分店
+    select From List By Label    xpath=//*[@id="panelTabPage"]/section[4]/div[1]/dl/dd[1]/table/tbody/tr[3]/td[2]/select    民生类
+    sleep    3
+    Click Element    xpath=//*[@id="panelTabPage"]/section[4]/div[1]/dl/dd[1]/table/tbody/tr[4]/td[2]/div
+    Click Element    xpath=//*[@id="panelTabPage"]/section[4]/div[1]/dl/dd[1]/table/tbody/tr[4]/td[2]/div/div/ul/li[7]
+    #select From List By Label    xpath=//*[@id="panelTabPage"]/section[4]/div[1]/dl/dd[1]/table/tbody/tr[4]/td[2]/select    自助加油站
+    sleep    1
+    select From List By Label    xpath=//*[@id="panelTabPage"]/section[4]/div[1]/dl/dd[1]/table/tbody/tr[5]/td[2]/select[3]    西安区
+    Input Text    xpath=//*[@id="panelTabPage"]/section[4]/div[1]/dl/dd[1]/table/tbody/tr[6]/td[2]/input    解放路${n}号
+    Input Text    xpath=//*[@id="panelTabPage"]/section[4]/div[1]/dl/dd[1]/div/div/input[2]    MPOS2017${n}
+    Click Element    xpath=//*[@id="panelTabPage"]/section[4]/div[1]/dl/dd[1]/div/div/span[2]
+    sleep    1
+    select From List By Label    xpath=//*[@id="panelTabPage"]/section[4]/div[1]/dl/dd[3]/table/tbody/tr[5]/td[2]/select    0元通讯费
+    Click Element    xpath=//*[@id="panelTabPage"]/section[4]/div[1]/div/span[2]
+    log    租赁合同入网完成
+
+营业执照租赁
     [Arguments]    ${Type}    ${netType}    ${paymentType}    ${posType}    # 入网方式结算方式
     log    营业执照入网开始
     Wait Until Page Contains Element    xpath=//*[@id="mCSB_1_container"]/table/tbody/tr[1]/td[4]/select    40    error
@@ -132,6 +223,7 @@ Library           GetCode
     Click Element    css=#orderManageSearchButton
     Wait Until Page Contains Element    xpath=//*[@id="orderManageTable"]/tr[1]/td[1]/div/input
     Click Element    xpath=//*[@id="orderManageTable"]/tr[1]/td[1]/div/input
+    Take Screenshot    order.jpg    100%
     Click Element    ${Type}    #选择CRM
     Wait Until Page Contains Element    ${netType}
     Click Element    ${netType}    #选择租赁合同
@@ -205,6 +297,88 @@ Library           GetCode
     Click Element    xpath=//*[@id="panelTabPage"]/section[4]/div[1]/div/span[2]
     log    营业执照入网完成
 
+营业执照购买
+    [Arguments]    ${Type}    ${netType}    ${paymentType}    ${posType}    # 入网方式结算方式
+    log    营业执照入网开始
+    Wait Until Page Contains Element    xpath=//*[@id="mCSB_1_container"]/table/tbody/tr[1]/td[4]/select    40    error
+    select From List By Label    xpath=//*[@id="mCSB_1_container"]/table/tbody/tr[1]/td[4]/select    已接单
+    Click Element    css=#orderManageSearchButton
+    Wait Until Page Contains Element    xpath=//*[@id="orderManageTable"]/tr[1]/td[1]/div/input
+    Click Element    xpath=//*[@id="orderManageTable"]/tr[1]/td[1]/div/input
+    Take Screenshot    order.jpg    100%
+    Click Element    ${Type}    #选择CRM
+    Wait Until Page Contains Element    ${netType}
+    Click Element    ${netType}    #选择租赁合同
+    Click Element    ${paymentType}    #选择T+1
+    Click Element    xpath=//*[@id="orderDetailForm"]/div[2]/ul/li[1]/div/div/button
+    sleep    2
+    Wait Until Page Contains Element    xpath=//*[@id="panelTabPage"]/section[2]/div[1]/dl/dd[1]/table/tbody/tr[1]/td[2]/input
+    Click Element    xpath=//*[@id="panelTabPage"]/section[2]/div[1]/dl/dd[1]/table/tbody/tr[1]/td[2]/input
+    Clear Element Text    xpath=//*[@id="panelTabPage"]/section[2]/div[1]/dl/dd[1]/table/tbody/tr[1]/td[2]/input
+    Input Text    xpath=//*[@id="panelTabPage"]/section[2]/div[1]/dl/dd[1]/table/tbody/tr[1]/td[2]/input    440301105575593
+    sleep    1
+    Click Element    xpath=//*[@id='panelTabPage']/section[2]/div[1]/dl/dd[1]/table/tbody/tr[1]/td[2]/button    #点击搜素
+    Clear Element Text    xpath=//*[@id='panelTabPage']/section[2]/div[1]/dl/dd[1]/table/tbody/tr[2]/td[2]/input
+    sleep    2
+    Input Text    xpath=//*[@id='panelTabPage']/section[2]/div[1]/dl/dd[1]/table/tbody/tr[2]/td[2]/input    广州市震粤物业管理有限公司桐馨园管理处
+    Input Text    xpath=//*[@id="panelTabPage"]/section[2]/div[1]/dl/dd[1]/table/tbody/tr[1]/td[2]/input    440301105575593
+    select From List By Label    xpath=//*[@id="panelTabPage"]/section[2]/div[1]/dl/dd[1]/table/tbody/tr[4]/td[2]/select[1]    黑龙江省
+    select From List By Label    xpath=//*[@id="panelTabPage"]/section[2]/div[1]/dl/dd[1]/table/tbody/tr[4]/td[2]/select[2]    牡丹江市
+    select From List By Label    xpath=//*[@id="panelTabPage"]/section[2]/div[1]/dl/dd[1]/table/tbody/tr[4]/td[2]/select[3]    西安区
+    sleep    2
+    #Input Text    xpath=//*[@id="panelTabPage"]/section[2]/div[1]/dl/dd[2]/table/tbody/tr[2]/td[2]/input[2]    美宜佳
+    ${n}    Evaluate    random.randint(1000,99999)    random
+    Input Text    xpath=//*[@id="panelTabPage"]/section[2]/div[1]/dl/dd[1]/table/tbody/tr[5]/td[2]/input    解放路${n}号
+    Input Text    xpath=//*[@id="panelTabPage"]/section[2]/div[1]/dl/dd[1]/table/tbody/tr[6]/td[2]/input    物业管理
+    Input Text    xpath=//*[@id="panelTabPage"]/section[2]/div[1]/dl/dd[1]/table/tbody/tr[7]/td[2]/input    凃东华
+    Input Text    xpath=//*[@id="panelTabPage"]/section[2]/div[1]/dl/dd[1]/table/tbody/tr[8]/td[2]/input    320721197409194231
+    Input Text    xpath=//*[@id="panelTabPage"]/section[2]/div[1]/dl/dd[1]/table/tbody/tr[9]/td[2]/input    13544120000
+    Input Text    xpath=//*[@id="panelTabPage"]/section[2]/div[1]/dl/dd[1]/table/tbody/tr[10]/td[2]/input    13544120000@qq.com
+    sleep    2
+    Click Element    xpath=//*[@id="panelTabPage"]/section[2]/div[1]/dl/dd[1]/div/ul/li[1]/a
+    Evaluate    os.system('D:/pythonProject/mudelspider/rrd_operator_test/upload_robot.exe')    os
+    sleep    1
+    #Input Text    xpath=//*[@id="panelTabPage"]/section[2]/div[1]/dl/dd[1]/table/tbody/tr[1]/td[2]/input    440301105575593
+    Click Element    xpath=//*[@id="panelTabPage"]/section[2]/div[1]/dl/dd[1]/div/ul/li[2]/a
+    Evaluate    os.system('D:/pythonProject/mudelspider/rrd_operator_test/upload_robot.exe')    os
+    sleep    1
+    Click Element    xpath=//*[@id="panelTabPage"]/section[2]/div[1]/dl/dd[1]/div/ul/li[3]/a
+    Evaluate    os.system('D:/pythonProject/mudelspider/rrd_operator_test/upload_robot.exe')    os
+    sleep    1
+    Click Element    xpath=//*[@id="panelTabPage"]/section[2]/div[1]/div/span[2]    #进入下一页
+    sleep    1
+    Wait Until Page Contains Element    xpath=//*[@id="panelTabPage"]/section[3]/div[1]/table/tbody/tr[6]/td[3]/button
+    Click Element    xpath=//*[@id="panelTabPage"]/section[3]/div[1]/table/tbody/tr[1]/td[2]/span[1]    #账户类型对公账户
+    Input Text    xpath=//*[@id="panelTabPage"]/section[3]/div[1]/table/tbody/tr[3]/td[2]/input    766658897826
+    Input Text    xpath=//*[@id="panelTabPage"]/section[3]/div[1]/table/tbody/tr[6]/td[2]/input    中国银行
+    Input Text    xpath=//*[@id="panelTabPage"]/section[3]/div[1]/table/tbody/tr[7]/td[2]/input    中国银行股份有限公司深圳莲塘支行
+    Click Element    xpath=//*[@id="panelTabPage"]/section[3]/div[1]/table/tbody/tr[6]/td[3]/button
+    sleep    1
+    Click Element    xpath=//*[@id="panelTabPage"]/section[3]/div[1]/div[1]/ul/li/div
+    sleep    2
+    Click Element    xpath=//*[@id="pageThree"]/a
+    sleep    1
+    Evaluate    os.system('D:/pythonProject/mudelspider/rrd_operator_test/upload_robot.exe')    os
+    sleep    1
+    Click Element    xpath=//*[@id="panelTabPage"]/section[3]/div[1]/div[2]/span[2]    #进入下一页
+    Wait Until Page Contains Element    xpath=//*[@id="panelTabPage"]/section[4]/div[1]/dl/dd[1]/div/div/button
+    Input Text    xpath=//*[@id="panelTabPage"]/section[4]/div[1]/dl/dd[1]/table/tbody/tr[1]/td[2]/input    震粤物业管理
+    Input Text    xpath=//*[@id="panelTabPage"]/section[4]/div[1]/dl/dd[1]/table/tbody/tr[2]/td[2]/input    广州市震粤物业管理有限公司
+    select From List By Label    xpath=//*[@id="panelTabPage"]/section[4]/div[1]/dl/dd[1]/table/tbody/tr[3]/td[2]/select    民生类
+    sleep    3
+    Click Element    xpath=//*[@id="panelTabPage"]/section[4]/div[1]/dl/dd[1]/table/tbody/tr[4]/td[2]/div
+    Click Element    xpath=//*[@id="panelTabPage"]/section[4]/div[1]/dl/dd[1]/table/tbody/tr[4]/td[2]/div/div/ul/li[7]
+    #select From List By Label    xpath=//*[@id="panelTabPage"]/section[4]/div[1]/dl/dd[1]/table/tbody/tr[4]/td[2]/select    自助加油站
+    sleep    1
+    select From List By Label    xpath=//*[@id="panelTabPage"]/section[4]/div[1]/dl/dd[1]/table/tbody/tr[5]/td[2]/select[3]    西安区
+    Input Text    xpath=//*[@id="panelTabPage"]/section[4]/div[1]/dl/dd[1]/table/tbody/tr[6]/td[2]/input    解放路${n}号
+    Input Text    ${posType}    MPOS2017${n}
+    Click Element    xpath=//*[@id="panelTabPage"]/section[4]/div[1]/dl/dd[1]/div/div/span[2]
+    select From List By Label    xpath=//*[@id="panelTabPage"]/section[4]/div[1]/dl/dd[3]/table/tbody/tr[5]/td[2]/select    0元通讯费
+    Input Text    xpath=//*[@id="panelTabPage"]/section[4]/div[1]/dl/dd[3]/div[2]/p/textarea    CRM营业执照入网，购买pos
+    Click Element    xpath=//*[@id="panelTabPage"]/section[4]/div[1]/div/span[2]
+    log    营业执照入网完成
+
 小微进件
     [Arguments]    ${Type}    ${netType}    ${paymentType}    # 入网方式结算方式
     log    小微商户入网开始
@@ -269,16 +443,8 @@ Library           GetCode
     Click Element    //*[@id="panelTabPage"]/section[4]/div[1]/div/span[2]
     log    小微商户入网完成
 
-租赁
-    \    xpath=//*[@id="panelTabPage"]/section[4]/div[1]/dl/dd[3]/table/tbody/tr[5]/td[2]/select
-
-购买
-    select From List By Label    xpath=//*[@id="panelTabPage"]/section[4]/div[1]/dl/dd[3]/table/tbody/tr[5]/td[2]/select    0元通讯费
-    sleep    1
-    Input Text    xpath=//*[@id="panelTabPage"]/section[4]/div[1]/dl/dd[3]/div[2]/p/textarea    购机费299,0元通讯费，pos+入网
-    Click Element    xpath=//*[@id="panelTabPage"]/section[4]/div[1]/div/span[2]
-
 关闭浏览器
+    sleep    2
     log    关闭浏览器
     Close All Browsers
 
