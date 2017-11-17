@@ -4,7 +4,6 @@ Library           Selenium2Library
 Library           Screenshot
 Library           AutoItLibrary
 Library           DatabaseLibrary
-Library           ../../../../Lib/site-packages/robot/libraries/Collections.py
 
 *** Test Cases ***
 CRM_rent_D0

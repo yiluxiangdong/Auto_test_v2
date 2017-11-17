@@ -5,7 +5,6 @@ Library           Screenshot
 Library           AutoItLibrary
 Library           DatabaseLibrary
 Library           requests
-Library           RequestsLibrary
 Library           String
 Library           GetCode
 
