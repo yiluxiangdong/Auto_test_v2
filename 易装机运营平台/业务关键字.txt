@@ -45,6 +45,7 @@ Library           GetCode
     Click Element    ${Type}    #选择CRM
     Wait Until Page Contains Element    ${netType}
     Click Element    ${netType}    #选择租赁合同
+    Take Screenshot    detail.jpg    100%
     Click Element    ${paymentType}    #选择T+1
     Click Element    xpath=//*[@id="orderDetailForm"]/div[2]/ul/li[1]/div/div/button
     sleep    3
@@ -136,6 +137,7 @@ Library           GetCode
     Take Screenshot    order.jpg    100%
     Click Element    ${Type}    #选择CRM
     Wait Until Page Contains Element    ${netType}
+    Take Screenshot    detail.jpg    100%
     Click Element    ${netType}    #选择租赁合同
     Click Element    ${paymentType}    #选择T+1
     Click Element    xpath=//*[@id="orderDetailForm"]/div[2]/ul/li[1]/div/div/button
@@ -227,6 +229,7 @@ Library           GetCode
     Click Element    ${Type}    #选择CRM
     Wait Until Page Contains Element    ${netType}
     Click Element    ${netType}    #选择租赁合同
+    Take Screenshot    detail.jpg    100%
     Click Element    ${paymentType}    #选择T+1
     Click Element    xpath=//*[@id="orderDetailForm"]/div[2]/ul/li[1]/div/div/button
     sleep    2
@@ -309,6 +312,7 @@ Library           GetCode
     Click Element    ${Type}    #选择CRM
     Wait Until Page Contains Element    ${netType}
     Click Element    ${netType}    #选择租赁合同
+    Take Screenshot    detail.jpg    100%
     Click Element    ${paymentType}    #选择T+1
     Click Element    xpath=//*[@id="orderDetailForm"]/div[2]/ul/li[1]/div/div/button
     sleep    2
