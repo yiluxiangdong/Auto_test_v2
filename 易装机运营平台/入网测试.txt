@@ -1,0 +1,13 @@
+*** Settings ***
+Library           Selenium2Library
+Library           Screenshot
+Library           AutoItLibrary
+Library           DatabaseLibrary
+Library           GetCode
+Resource          入网关键字.txt
+
+*** Test Cases ***
+入网控制测试
+    [Documentation]    CRM/POS
+    登录系统
+    入网测试    POS    营业执照YY
