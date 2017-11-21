@@ -2,6 +2,7 @@
 Library           Screenshot
 Library           DatabaseLibrary
 Library           GetCode
+Library           InsertDB
 
 *** Keywords ***
 登录系统
@@ -200,9 +201,16 @@ Library           GetCode
     ${b}    Get Value    xpath=//*[@id="panelTabPage"]/section[4]/div[2]/div/table/tbody/tr[7]/td[2]/input
     Run Keyword If    '${b}'=="租赁"    租赁套餐
     ...    ELSE    购买套餐
-    Input Text    xpath=//*[@id="panelTabPage"]/section[4]/div[1]/dl/dd[3]/div[2]/p/textarea    ${Type}入网完成，商户名：美宜佳第${n}分店,进件类型：${netType}，主订单号：${orderId}
-    log    ${Type}入网完成，商户名：美宜佳第${n}分店,进件类型：${netType}，主订单号：${orderId}
-    sleep    5
+    Run Keyword If    '${netType}'=="租赁合同ZL"    InsertMysql    ${orderId}    ${netType}    ${Type}    美宜佳第${n}分店
+    ...    CRMPOS2017${n}
+    ...    ELSE IF    '${netType}'=="营业执照YY"    InsertMysql    ${orderId}    ${netType}    ${Type}
+    ...    震粤物业管理    POSPLUS2017${n}
+    ...    ELSE IF    '${netType}'=="小微商户XW"    log    小微商户XW
+    ...    ELSE    log    类型有误
+    ${posNo}    GetposNo    ${orderId}    #返回posNo
+    Input Text    xpath=//*[@id="panelTabPage"]/section[4]/div[1]/dl/dd[3]/div[2]/p/textarea    ${Type}入网完成，商户名：美宜佳第${n}分店,进件类型：${netType}，主订单号：${orderId},终端号：${posNo}
+    log    ${Type}入网完成，商户名：美宜佳第${n}分店,进件类型：${netType}，主订单号：${orderId},终端号：${posNo}
+    sleep    2
     Click Element    xpath=//*[@id="panelTabPage"]/section[4]/div[1]/div/span[2]
 
 租赁合同信息
@@ -214,3 +222,8 @@ Library           GetCode
     SLEEP    1
     Input Text    xpath=//*[@id="panelTabPage"]/section[4]/div[1]/dl/dd[1]/table/tbody/tr[1]/td[2]/input    震粤物业管理
     Input Text    xpath=//*[@id="panelTabPage"]/section[4]/div[1]/dl/dd[1]/table/tbody/tr[2]/td[2]/input    广州市震粤物业管理有限公司
+
+关闭浏览器程序
+    sleep    2
+    log    关闭浏览器程序
+    Close All Browsers

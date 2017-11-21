@@ -1,0 +1,43 @@
+Robot Framework: 自定义自己的python库
+
+利用Robot Framework编写测试用例，往往需要开发自己的关键字，有的关键字需要通过自己编写python代码来实现。这在rf中，就需要自己定义python库。这个过程其实不复杂，本文来介绍下。
+1、在python安装目录下的 Lib\site-packages 目录下 新建一个目录，目录名就是库名，如 NewLibrary
+2、在新建的NewLibrary目录下创建一个python文件，任何合法的文件名即可，扩展名为py。如：myclass.py
+其内容如下
+class MyClass(object):
+    def __init__(self):
+        pass
+ 
+    def printMsg(self,msg):
+        print "hello "+msg
+
+上面代码定义了一个python类，其中除构造方法 _init_ 外，还定义了一个printMsg方法，该方法其实就是rf中的关键字，可以直接在rf中使用。下面我们介绍。
+
+3、在新建的NewLibrary目录下创建 __init__.py 文件，文件名必须固定这样。该文件的功能，就是把关键字类暴露出来，让rf能知道。
+其内容如下：
+
+from myclass import MyClass
+class NewLibrary(MyClass):
+    ROBOT_LIBRARY_SCOPE = 'GLOBAL'
+
+4、通过前面三个步骤，一个最简单的自定义的NewLibrary库就创建好了，在rf工具中就可以使用了
+1）先要导入 NewLibrary 库
+2）使用关键字printMsg。需要说明的是，在rf中引用时，既可以写成 printMsg，也可写成 print msg。一般习惯用空格把单词分开。因为rf关键字不区分大小写。
+
+*** Test Cases ***
+successsd
+    print msg    god
+    printMsg    ss
+    printmsg    yy
+5、增加新的关键字
+增加新的关键字很简单，只需在MyClass类中增加新的方法即可。如：
+
+class MyClass(object):
+    def __init__(self):
+        pass
+ 
+    def printMsg(self,msg):
+        print "hello "+msg
+        
+    def join_info(self,a,b):
+        print a+b

@@ -5,9 +5,15 @@ Library           AutoItLibrary
 Library           DatabaseLibrary
 Library           GetCode
 Resource          入网关键字.txt
+Library           InsertDB
 
 *** Test Cases ***
 入网控制测试
     [Documentation]    CRM/POS
-    登录系统
+    [Setup]    登录系统
     入网测试    POS    营业执照YY
+    #入网测试    CRM    租赁合同ZL
+    [Teardown]    关闭浏览器程序
+
+demo
+    InsertMysql     1    1    1    1
