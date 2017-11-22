@@ -26,7 +26,7 @@ Library           InsertDB
     log    进入订单管理界面
 
 入网测试
-    [Arguments]    ${Type}    ${netType}    # 输入入网类型CRM/POSPLUS
+    [Arguments]    ${Type}    ${netType}    ${provideType}    # 输入入网类型CRM/POSPLUS
     log    ${Type}入网开始
     Wait Until Page Contains Element    xpath=//*[@id="mCSB_1_container"]/table/tbody/tr[1]/td[4]/select    40    error
     select From List By Label    xpath=//*[@id="mCSB_1_container"]/table/tbody/tr[1]/td[4]/select    已接单
@@ -38,23 +38,34 @@ Library           InsertDB
     ...    ELSE IF    '${Type}'=="POS"    Click Element    xpath=//*[@id="orderManageDiv"]/div/div[1]/ul/li[14]/a/span
     ...    ELSE    log    不存在${Type}方式入网
     Wait Until Page Contains Element    xpath=//*[@id="orderDetailForm"]/div[1]/table/tbody/tr/td[1]/table/tbody/tr[1]/td/div/table/tbody/tr[6]/td[4]/table/tbody/tr[1]/td    #入网方式选择项目出现
-    Take Screenshot    detail.jpg    100%
+    #Take Screenshot    detail.jpg    100%
     ${orderId}    Get Value    xpath=//*[@id="orderDetailForm"]/div[1]/table/tbody/tr/td[1]/table/tbody/tr[1]/td/div/table/tbody/tr[1]/td[2]/input
     log    客户经理主订单：${orderId}    #获取订单号
-    Run Keyword If    '${netType}'=="租赁合同ZL"    租赁合同入网    ${Type}    ${netType}    ${orderId}
+    #Run Keyword If    '${provideType}'=="租赁"    updateType    ${orderId}    rent
+    ...    # ELSE IF    '${provideType}'=="购买"    updateType    ${orderId}    buy
+    ...    # ELSE    log    不存在${provideType}进件方式
+    Run Keyword If    '${provideType}'=="租赁"    修改订单为租赁
+    ...    ELSE IF    '${provideType}'=="购买"    修改订单为购买
+    ...    ELSE    log    不存在${provideType}进件方式
+    log    ${orderId}付款方式已经修改,${provideType}
+    Take Screenshot    detail.jpg    100%
+    sleep    2
+    Run Keyword If    '${netType}'=="租赁合同ZL"    租赁合同入网    ${Type}    ${netType}    ${orderId}    ${provideType}
     ...    ELSE IF    '${netType}'=="营业执照YY"    营业执照入网    ${Type}    ${netType}    ${orderId}
+    ...    ${provideType}
     ...    ELSE IF    '${netType}'=="小微商户XW"    小微商户入网    ${Type}    ${netType}    ${orderId}
+    ...    ${provideType}
     ...    ELSE    log    不存在${netTpye}进件方式
 
 租赁合同入网
-    [Arguments]    ${Type}    ${netType}    ${orderId}    # 入网方式CRM/POS+
+    [Arguments]    ${Type}    ${netType}    ${orderId}    ${provideType}    # 入网方式CRM/POS+
     Click Element    xpath=//*[@id="orderDetailForm"]/div[1]/table/tbody/tr/td[1]/table/tbody/tr[1]/td/div/table/tbody/tr[6]/td[4]/table/tbody/tr[1]/td/span[2]
     log    选择租赁合同进件
     Click Element    xpath=//*[@id="orderDetailForm"]/div[1]/table/tbody/tr/td[1]/table/tbody/tr[1]/td/div/table/tbody/tr[8]/td[4]/span
     log    选择普通POS(T+1)结算方式
     Click Element    xpath=//*[@id="orderDetailForm"]/div[2]/ul/li[1]/div/div/button
     log    填写租赁合同入网信息
-    sleep    3
+    sleep    10
     Wait Until Page Contains Element    xpath=//*[@id="panelTabPage"]/section[2]/div[1]/dl/dd[2]/table/tbody/tr[1]/td[2]/select[1]
     select From List By Label    xpath=//*[@id="panelTabPage"]/section[2]/div[1]/dl/dd[2]/table/tbody/tr[1]/td[2]/select[1]    黑龙江省
     select From List By Label    xpath=//*[@id="panelTabPage"]/section[2]/div[1]/dl/dd[2]/table/tbody/tr[1]/td[2]/select[2]    牡丹江市
@@ -69,7 +80,6 @@ Library           InsertDB
     Input Text    xpath=//*[@id="panelTabPage"]/section[2]/div[1]/dl/dd[2]/table/tbody/tr[8]/td[2]/input    342501198509230010
     Input Text    xpath=//*[@id="panelTabPage"]/section[2]/div[1]/dl/dd[2]/table/tbody/tr[9]/td[2]/input    18852136300
     Input Text    xpath=//*[@id="panelTabPage"]/section[2]/div[1]/dl/dd[2]/table/tbody/tr[10]/td[2]/input    18852136300@189.com
-    sleep    2
     Click Element    xpath=//*[@id="panelTabPage"]/section[2]/div[1]/dl/dd[2]/div/ul/li[1]/a
     Evaluate    os.system('D:/pythonProject/mudelspider/rrd_operator_test/upload_robot.exe')    os
     sleep    1
@@ -101,17 +111,17 @@ Library           InsertDB
     sleep    1
     Click Element    xpath=//*[@id="panelTabPage"]/section[3]/div[1]/div[2]/span[2]
     sleep    1
-    入网第三步    ${n}    ${Type}    ${netType}    ${orderId}
+    入网第三步    ${n}    ${Type}    ${netType}    ${orderId}    ${provideType}
 
 营业执照入网
-    [Arguments]    ${Type}    ${netType}    ${orderId}    # 入网方式CRM/POS+
+    [Arguments]    ${Type}    ${netType}    ${orderId}    ${provideType}    # 入网方式CRM/POS+
     Click Element    xpath=//*[@id="orderDetailForm"]/div[1]/table/tbody/tr/td[1]/table/tbody/tr[1]/td/div/table/tbody/tr[6]/td[4]/table/tbody/tr[1]/td/span[1]
     log    选择营业执照进件
     Click Element    xpath=//*[@id="orderDetailForm"]/div[1]/table/tbody/tr/td[1]/table/tbody/tr[1]/td/div/table/tbody/tr[8]/td[4]/span
     log    选择普通POS(T+1)结算方式
     Click Element    xpath=//*[@id="orderDetailForm"]/div[2]/ul/li[1]/div/div/button
     log    填写营业执照入网信息
-    sleep    2
+    sleep    5
     Wait Until Page Contains Element    xpath=//*[@id="panelTabPage"]/section[2]/div[1]/dl/dd[1]/table/tbody/tr[1]/td[2]/input
     Click Element    xpath=//*[@id="panelTabPage"]/section[2]/div[1]/dl/dd[1]/table/tbody/tr[1]/td[2]/input
     Clear Element Text    xpath=//*[@id="panelTabPage"]/section[2]/div[1]/dl/dd[1]/table/tbody/tr[1]/td[2]/input
@@ -133,6 +143,12 @@ Library           InsertDB
     Input Text    xpath=//*[@id="panelTabPage"]/section[2]/div[1]/dl/dd[1]/table/tbody/tr[8]/td[2]/input    320721197409194231
     Input Text    xpath=//*[@id="panelTabPage"]/section[2]/div[1]/dl/dd[1]/table/tbody/tr[9]/td[2]/input    13544120000
     Input Text    xpath=//*[@id="panelTabPage"]/section[2]/div[1]/dl/dd[1]/table/tbody/tr[10]/td[2]/input    13544120000@qq.com
+    #Run Keyword If    '${provideType}'=="租赁"    updateType    ${orderId}    rent
+    #...
+    ...    # ELSE IF    '${provideType}'=="购买"    updateType    ${orderId}    buy
+    #...
+    ...    # ELSE    log    不存在${provideType}进件方式
+    #log    付款方式已经修改
     sleep    2
     Click Element    xpath=//*[@id="panelTabPage"]/section[2]/div[1]/dl/dd[1]/div/ul/li[1]/a
     Evaluate    os.system('D:/pythonProject/mudelspider/rrd_operator_test/upload_robot.exe')    os
@@ -159,16 +175,20 @@ Library           InsertDB
     Evaluate    os.system('D:/pythonProject/mudelspider/rrd_operator_test/upload_robot.exe')    os
     sleep    1
     Click Element    xpath=//*[@id="panelTabPage"]/section[3]/div[1]/div[2]/span[2]    #进入下一页
-    入网第三步    ${n}    ${Type}    ${netType}    ${orderId}
+    入网第三步    ${n}    ${Type}    ${netType}    ${orderId}    ${provideType}
 
 小微商户入网
-    [Arguments]    ${Type}    ${netType}    ${orderId}    # 入网方式CRM/POS+
+    [Arguments]    ${Type}    ${netType}    ${orderId}    ${provideType}    # 入网方式CRM/POS+
     Click Element    xpath=//*[@id="orderDetailForm"]/div[1]/table/tbody/tr/td[1]/table/tbody/tr[1]/td/div/table/tbody/tr[6]/td[4]/table/tbody/tr[1]/td/span[3]
     log    选择租赁合同进件
     Click Element    xpath=//*[@id="orderDetailForm"]/div[1]/table/tbody/tr/td[1]/table/tbody/tr[1]/td/div/table/tbody/tr[8]/td[4]/span
     log    选择普通POS(T+1)结算方式
     Click Element    xpath=//*[@id="orderDetailForm"]/div[2]/ul/li[1]/div/div/button
     log    填写入租赁入网信息
+    Run Keyword If    '${provideType}'=="租赁"    updateType    ${orderId}    rent
+    ...    ELSE IF    '${provideType}'=="购买"    updateType    ${orderId}    buy
+    ...    ELSE    log    不存在${provideType}进件方式
+    log    付款方式已经修改
 
 租赁套餐
     select From List By Label    xpath=//*[@id="panelTabPage"]/section[4]/div[1]/dl/dd[3]/table/tbody/tr[4]/td[2]/select    200元押金
@@ -180,8 +200,31 @@ Library           InsertDB
     select From List By Label    xpath=//*[@id="panelTabPage"]/section[4]/div[1]/dl/dd[3]/table/tbody/tr[5]/td[2]/select    0元通讯费
     sleep    1
 
+租赁合同信息
+    SLEEP    1
+    Input Text    xpath=//*[@name="name_short"]    MYJ${n}店
+    Input Text    xpath=//*[@name="name_print"]    美宜佳第${n}分店
+
+营业执照信息
+    SLEEP    1
+    Input Text    xpath=//*[@id="panelTabPage"]/section[4]/div[1]/dl/dd[1]/table/tbody/tr[1]/td[2]/input    震粤物业管理
+    Input Text    xpath=//*[@id="panelTabPage"]/section[4]/div[1]/dl/dd[1]/table/tbody/tr[2]/td[2]/input    广州市震粤物业管理有限公司
+
+关闭浏览器程序
+    sleep    2
+    log    关闭浏览器程序
+    Close All Browsers
+
+修改订单为租赁
+    Click Element    xpath=//*[@id="packageDetail"]/div/div[1]/div/div/div[1]/div[3]/div/div[2]
+
+修改订单为购买
+    Click Element    xpath=//*[@id="packageDetail"]/div/div[1]/div/div/div[1]/div[3]/div/div[1]
+    Click Element    xpath=//*[@id="buywayTr"]/div/div[1]/div/span
+    Input Text    xpath=//*[@id="buywayTr"]/div/div[2]/div/input    299
+
 入网第三步
-    [Arguments]    ${n}    ${Type}    ${netType}    ${orderId}    # 随机数与入网类型
+    [Arguments]    ${n}    ${Type}    ${netType}    ${orderId}    ${provideType}    # 随机数与入网类型
     Wait Until Page Contains Element    xpath=//*[@id="panelTabPage"]/section[4]/div[1]/dl/dd[1]/div/div/button
     Run Keyword If    '${netType}'=="租赁合同ZL"    租赁合同信息
     ...    ELSE IF    '${netType}'=="营业执照YY"    营业执照信息
@@ -198,32 +241,22 @@ Library           InsertDB
     ...    ELSE IF    '${Type}'=="POS"    Input Text    xpath=//input[@name='posPlusMachineId']    POSPLUS2017${n}
     ...    ELSE    log    入网失败
     Click Element    xpath=//*[@id="panelTabPage"]/section[4]/div[1]/dl/dd[1]/div/div/span[2]
-    ${b}    Get Value    xpath=//*[@id="panelTabPage"]/section[4]/div[2]/div/table/tbody/tr[7]/td[2]/input
-    Run Keyword If    '${b}'=="租赁"    租赁套餐
-    ...    ELSE    购买套餐
+    #${b}    Get Value    xpath=//*[@id="panelTabPage"]/section[4]/div[2]/div/table/tbody/tr[7]/td[2]/input
+    Run Keyword If    '${provideType}'=="租赁"    租赁套餐
+    ...    ELSE IF    '${provideType}'=="购买"    购买套餐
+    Input Text    xpath=//*[@id="panelTabPage"]/section[4]/div[1]/dl/dd[3]/div[2]/p/textarea    ${Type},美宜佳第${n}分店,${orderId}
+    Click Element    xpath=//*[@id="panelTabPage"]/section[4]/div[1]/div/span[2]
+    log    点击提交按钮
+    sleep    2
+    ${result}    Getstatus    ${orderId}
+    log    ${orderId}订单状态是${result}
     Run Keyword If    '${netType}'=="租赁合同ZL"    InsertMysql    ${orderId}    ${netType}    ${Type}    美宜佳第${n}分店
-    ...    CRMPOS2017${n}
+    ...    CRMPOS2017${n}    ${provideType}    ${result}
     ...    ELSE IF    '${netType}'=="营业执照YY"    InsertMysql    ${orderId}    ${netType}    ${Type}
-    ...    震粤物业管理    POSPLUS2017${n}
+    ...    震粤物业管理    POSPLUS2017${n}    ${provideType}    ${result}
     ...    ELSE IF    '${netType}'=="小微商户XW"    log    小微商户XW
     ...    ELSE    log    类型有误
+    log    数据库插入完成
     ${posNo}    GetposNo    ${orderId}    #返回posNo
-    Input Text    xpath=//*[@id="panelTabPage"]/section[4]/div[1]/dl/dd[3]/div[2]/p/textarea    ${Type}入网完成，商户名：美宜佳第${n}分店,进件类型：${netType}，主订单号：${orderId},终端号：${posNo}
-    log    ${Type}入网完成，商户名：美宜佳第${n}分店,进件类型：${netType}，主订单号：${orderId},终端号：${posNo}
-    sleep    2
-    Click Element    xpath=//*[@id="panelTabPage"]/section[4]/div[1]/div/span[2]
-
-租赁合同信息
-    SLEEP    1
-    Input Text    xpath=//*[@name="name_short"]    MYJ${n}店
-    Input Text    xpath=//*[@name="name_print"]    美宜佳第${n}分店
-
-营业执照信息
-    SLEEP    1
-    Input Text    xpath=//*[@id="panelTabPage"]/section[4]/div[1]/dl/dd[1]/table/tbody/tr[1]/td[2]/input    震粤物业管理
-    Input Text    xpath=//*[@id="panelTabPage"]/section[4]/div[1]/dl/dd[1]/table/tbody/tr[2]/td[2]/input    广州市震粤物业管理有限公司
-
-关闭浏览器程序
-    sleep    2
-    log    关闭浏览器程序
-    Close All Browsers
+    log    ${posNo}
+    log    ${Type}入网完成，商户名：美宜佳第${n}分店,进件类型：${netType}，主订单号：${orderId}，${posNo}
