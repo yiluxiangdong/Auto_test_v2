@@ -11,6 +11,7 @@ Library           InsertDB
 入网控制测试
     [Documentation]    CRM/POS小微商户无法做CRM进件
     [Setup]    登录系统
+    [Timeout]
     #入网测试    POS    营业执照YY    购买
     #入网测试    POS    营业执照YY    租赁
     #入网测试    POS    租赁合同ZL    购买
@@ -21,7 +22,7 @@ Library           InsertDB
     #入网测试    CRM    租赁合同ZL    租赁
     #入网测试    POS    小微商户XW    租赁
     入网测试    POS    小微商户XW    购买
-    [Teardown]    关闭浏览器程序
+    [Teardown]
 
 demo
     updateType    1000000021017    rent

@@ -231,7 +231,7 @@ Library           InsertDB
     select From List By Label    xpath=//*[@id="panelTabPage"]/section[4]/div[1]/dl/dd[1]/table/tbody/tr[5]/td[2]/select[3]    西安区
     Input Text    xpath=//*[@id="panelTabPage"]/section[4]/div[1]/dl/dd[1]/table/tbody/tr[6]/td[2]/input    解放路${n}号
     Click Element    //*[@id="panelTabPage"]/section[4]/div[1]/div/span[2]
-    sleep    15
+    sleep    5
     log    小微商户入网完成
     ${result}    Getstatus    ${orderId}
     log    ${orderId}订单状态是${result}
@@ -239,6 +239,8 @@ Library           InsertDB
     ...    ${result}
     log    数据库插入完成
     log    ${Type}入网完成，商户名：天福第${n}分店,进件类型：${netType}，主订单号：${orderId}
+    关闭浏览器程序
+    打开测试报告
 
 租赁套餐
     select From List By Label    xpath=//*[@id="panelTabPage"]/section[4]/div[1]/dl/dd[3]/table/tbody/tr[4]/td[2]/select    200元押金
@@ -310,3 +312,11 @@ Library           InsertDB
     ${posNo}    GetposNo    ${orderId}    #返回posNo
     log    ${posNo}
     log    ${Type}入网完成，商户名：美宜佳第${n}分店,进件类型：${netType}，主订单号：${orderId}，${posNo}
+    关闭浏览器程序
+    打开测试报告
+
+打开测试报告
+    Evaluate    os.system('D:/kill/kill.bat')    os
+    log    初始化浏览器完成
+    Open Browser    E:/abc/report.html    chrome
+    Maximize Browser Window
