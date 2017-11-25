@@ -19,8 +19,8 @@ Library           InsertDB
     #入网测试    CRM    营业执照YY    购买    T+1
     #入网测试    CRM    营业执照YY    租赁    T+1
     #入网测试    CRM    租赁合同ZL    购买    T+1
-    #入网测试    CRM    租赁合同ZL    租赁    T+1
-    入网测试    POS    营业执照YY    购买    D0
+    入网测试    CRM    租赁合同ZL    租赁    T+1
+    #入网测试    POS    营业执照YY    购买    D0
     #入网测试    POS    营业执照YY    租赁    D0
     #入网测试    CRM    营业执照YY    购买    D0
     #入网测试    CRM    营业执照YY    租赁    D0
