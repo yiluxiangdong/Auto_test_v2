@@ -1,3 +1,4 @@
+@echo off
 rem "2437375168@qq.com"
 rem ÔÚÃüÁîĞĞÊäÈëÃüÁî:
 rem git config --global credential.helper store
