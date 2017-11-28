@@ -359,6 +359,7 @@ ${posnos}         ${EMPTY}
 
 订单管理
     Click Element    xpath=//*[@id="sidebar"]/div[1]/div[3]/a
+    log    选择订单管理
     Click Element    xpath=//*[@id="sidebar"]/div[1]/div[4]/ul/li[1]/div/a
     log    进入订单管理界面${Type}入网开始
 
