@@ -12,9 +12,10 @@ rem 总结：
 rem 方案一与方案二都是创建.git-credential文件并写入用户信息，一个是手动创建，一个命令创建。
 pause
 set d=%date:~0,10%
+set t=%time:~0,8%
 git init
 git add .
-git commit -m "自动化测试脚本%d%"
+git commit -m "自动化测试脚本%d% %t% 更新"
 git  remote add origin https://github.com/yiluxiangdong/Auto_test_v2.git
 git pull --rebase origin master
 git push -u origin master
