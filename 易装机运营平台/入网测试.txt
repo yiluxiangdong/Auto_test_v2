@@ -12,28 +12,24 @@ Library           InsertDB
     [Documentation]    CRM/POS小微商户无法做CRM进件
     [Setup]    登录系统
     [Timeout]
-    #入网测试    POS    营业执照YY    购买    T+1    无机身号    有通讯费
-    #入网测试    POS    营业执照YY    租赁    T+1    \    无通讯费
-    入网测试    POS    租赁合同ZL    购买    T+1    无机身号    有通讯费
-    #入网测试    POS    租赁合同ZL    租赁    T+1
-    #入网测试    CRM    营业执照YY    购买    T+1
-    #入网测试    CRM    营业执照YY    租赁    T+1
-    #入网测试    CRM    租赁合同ZL    购买    T+1
-    #入网测试    CRM    租赁合同ZL    租赁    T+1    有机身号
-    #入网测试    POS    营业执照YY    购买    D0
-    #入网测试    POS    营业执照YY    租赁    D0
-    #入网测试    CRM    营业执照YY    购买    D0
-    #入网测试    CRM    营业执照YY    租赁    D0
-    #入网测试    POS    小微商户XW    购买    T+1
-    #入网测试    POS    小微商户XW    租赁    T+1
+    入网测试    POS    营业执照YY    购买    T+1    无机身号    有通讯费
+    ...    新装    月付
+    #入网测试    POS    营业执照YY    购买    D0    无机身号    有通讯费
+    ...    # 新装    月付
+    #入网测试    POS    租赁合同ZL    租赁    T+1    无机身号    有通讯费
+    ...    # 新装    月付
+    #入网测试    POS    租赁合同ZL    租赁    T+1    无机身号
+    #入网测试    CRM    营业执照YY    租赁    T+1    无机身号
+    #入网测试    CRM    租赁合同ZL    购买    T+1    无机身号
+    #入网测试    CRM    租赁合同ZL    租赁    T+1    无机身号
+    #入网测试    POS    营业执照YY    购买    D0    无机身号
+    #入网测试    POS    营业执照YY    租赁    D0    无机身号
+    #入网测试    CRM    营业执照YY    购买    D0    无机身号
+    #入网测试    CRM    营业执照YY    租赁    D0    无机身号
+    #入网测试    POS    小微商户XW    购买    T+1    无机身号
+    #入网测试    POS    小微商户XW    租赁    T+1    无机身号
     [Teardown]
 
-加机流程
-    [Setup]    登录系统
-    选择加机
-    sleep    2
-    select From List By Label    xpath=//*[@id="mCSB_1_container"]/table/tbody/tr[2]/td[2]/select    审核通过
-    Click Element    xpath=//*[@id="netInMerchantSearchButton"]
-
 demo
-    登录系统
+    ${a}=    111
+    log    ${a}
