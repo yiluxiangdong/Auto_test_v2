@@ -7,5 +7,5 @@
 from GetCode import GetCode
 __verison__ = "0.1.1"
 
-class getCode(GetCode):
+class GetCode(GetCode):
     ROBOT_LIBRARY_SCOPE = 'GLOBAL'
