@@ -1,0 +1,10 @@
+如何将python程序封装成exe可执行文件
+
+5步将py文件打包成exe文件
+http://www.360doc.com/content/13/1216/11/11029609_337549928.shtml
+用PyInstaller把Python代码打包成单个独立的exe可执行文件
+http://www.crifan.com/use_pyinstaller_to_package_python_to_single_executable_exe/
+相关打包命令
+http://blog.csdn.net/huilan_same/article/details/54377919
+ 
+pyinstaller -F -w -i 图标.ico **.py

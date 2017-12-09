@@ -1,8 +1,10 @@
 *** Settings ***
+Library           Selenium2Library
 Library           Screenshot
 Library           DatabaseLibrary
+Resource          入网关键字.txt
 Library           GetCode
-Library           InsertDB
+Library           AutoItLibrary
 
 *** Variables ***
 ${posNo}          ${EMPTY}
@@ -16,7 +18,7 @@ ${posNo}          ${EMPTY}
     log    打开http://172.20.21.176:18080/rrdop/login.html
     Input Text    xpath=//input[@id='userid_input']    test    #输入用户名
     Input Password    xpath=//input[@id='pwd_input']    111111    #输入密码
-    Take Screenshot    code.jpg    100%
+    Take Screenshot    code.jpg    120%
     log    截图完成
     sleep    1
     ${code}    Getcode    #识别验证码
@@ -24,6 +26,9 @@ ${posNo}          ${EMPTY}
     log    输入用户名密码验证码${code}登录平台
     Click Button    xpath=//input[@id='login_button']
     log    点击登录
+    sleep    1
+    #:FOR    ${t}    IN RANGE    3
+    #    Run Keyword And Continue On Failure    再次登录
 
 订单管理
     Click Element    xpath=//*[@id="sidebar"]/div[1]/div[3]/a
@@ -153,11 +158,11 @@ ${posNo}          ${EMPTY}
     sleep    5
     Wait Until Page Contains Element    xpath=//*[@id="panelTabPage"]/section[2]/div[1]/dl/dd[1]/table/tbody/tr[1]/td[2]/input
     Click Element    xpath=//*[@id="panelTabPage"]/section[2]/div[1]/dl/dd[1]/table/tbody/tr[1]/td[2]/input
-    Clear Element Text    xpath=//*[@id="panelTabPage"]/section[2]/div[1]/dl/dd[1]/table/tbody/tr[1]/td[2]/input
+    #Clear Element Text    xpath=//*[@id="panelTabPage"]/section[2]/div[1]/dl/dd[1]/table/tbody/tr[1]/td[2]/input
     Input Text    xpath=//*[@id="panelTabPage"]/section[2]/div[1]/dl/dd[1]/table/tbody/tr[1]/td[2]/input    440301105575593
     sleep    1
     Click Element    xpath=//*[@id='panelTabPage']/section[2]/div[1]/dl/dd[1]/table/tbody/tr[1]/td[2]/button    #点击搜素
-    Clear Element Text    xpath=//*[@id='panelTabPage']/section[2]/div[1]/dl/dd[1]/table/tbody/tr[2]/td[2]/input
+    #Clear Element Text    xpath=//*[@id='panelTabPage']/section[2]/div[1]/dl/dd[1]/table/tbody/tr[2]/td[2]/input
     sleep    2
     Input Text    xpath=//*[@id='panelTabPage']/section[2]/div[1]/dl/dd[1]/table/tbody/tr[2]/td[2]/input    广州市震粤物业管理有限公司桐馨园管理处
     Input Text    xpath=//*[@id="panelTabPage"]/section[2]/div[1]/dl/dd[1]/table/tbody/tr[1]/td[2]/input    440301105575593
@@ -392,3 +397,16 @@ ${posNo}          ${EMPTY}
     log    初始化浏览器完成
     Open Browser    E:/abc/report.html    chrome
     Maximize Browser Window
+
+再次登录
+    SLEEP    2
+    Input Text    xpath=//input[@id='userid_input']    test    #输入用户名
+    Input Password    xpath=//input[@id='pwd_input']    111111    #输入密码
+    Take Screenshot    code.jpg    150%
+    log    截图完成
+    sleep    1
+    ${code}    Getcode    #识别验证码
+    Input Text    id=code_input    ${code}    #输入验证码
+    log    输入用户名密码验证码${code}登录平台
+    Click Button    xpath=//input[@id='login_button']
+    log    点击登录
